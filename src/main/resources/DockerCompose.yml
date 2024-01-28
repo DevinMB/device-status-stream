@@ -19,7 +19,7 @@ services:
       /bin/sh -c "
       apk add --no-cache python3 py3-pip git wget;
       apk --no-cache add openjdk17-jre-headless;
-      if [ ! -f /data/data/device.status-${RELEASE_VERSION}.0-SNAPSHOT.jar ]; then
+      if [ ! -f /data/data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar ]; then
         wget -O /data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar https://github.com/DevinMB/device-status-stream/releases/download/v${RELEASE_VERSION}/device.status-${RELEASE_VERSION}-SNAPSHOT.jar;
       fi
       java -jar /data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar;
