@@ -15,7 +15,7 @@ public class DeviceStatusService {
     public DeviceStatus convertChairSensorDataToDeviceStatus(ChairSensorData chairSensorData) {
 
         String status = chairSensorData.isSitStatus() ? "In use" : "Not in use";
-        return new DeviceStatus(chairSensorData.getTimestamp(), chairSensorData.getDeviceId(), status);
+        return new DeviceStatus(chairSensorData.getTimestamp(), chairSensorData.getDeviceId(), status,chairSensorData.isSitStatus());
     }
 
 }

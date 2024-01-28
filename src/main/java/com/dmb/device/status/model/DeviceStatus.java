@@ -15,5 +15,7 @@ public class DeviceStatus {
 
     private String status;
 
+    private boolean active;
+
 
 }
