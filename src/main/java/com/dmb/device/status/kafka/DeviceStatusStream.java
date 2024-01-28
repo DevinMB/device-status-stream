@@ -36,7 +36,7 @@ public class DeviceStatusStream {
         KStream<String, ChairSensorData> stream = builder.stream("raw-sit-topic", Consumed.with(Serdes.String(), chairSensorDataSerde));
         stream.mapValues(deviceStatusService::convertChairSensorDataToDeviceStatus)
                 .selectKey((key, deviceStatus) -> deviceStatus.getDeviceId())
-                .to("device-status-test", Produced.with(Serdes.String(), deviceStatusSerde));
+                .to("device-status", Produced.with(Serdes.String(), deviceStatusSerde));
 
         KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), kafkaStreamsConfig.asProperties());
         kafkaStreams.start();
