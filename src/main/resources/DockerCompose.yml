@@ -7,7 +7,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - chair_sit_consumer:/data
+      - device_status_consumer:/data
     tty: true
     container_name: device-status-stream-container
     environment:
@@ -20,7 +20,7 @@ services:
       apk add --no-cache python3 py3-pip git wget;
       apk --no-cache add openjdk17-jre-headless;
       if [ ! -f /data/data/device.status-${RELEASE_VERSION}.0-SNAPSHOT.jar ]; then
-        wget -O /data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar https://github.com/DevinMB/sit-stats-api/releases/download/v${RELEASE_VERSION}/device.status-${RELEASE_VERSION}-SNAPSHOT.jar;
+        wget -O /data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar https://github.com/DevinMB/device-status-stream/releases/download/v${RELEASE_VERSION}/device.status-${RELEASE_VERSION}-SNAPSHOT.jar;
       fi
       java -jar /data/device.status-${RELEASE_VERSION}-SNAPSHOT.jar;
       "
@@ -30,4 +30,4 @@ networks:
     driver: bridge
 
 volumes:
-  chair_sit_consumer:
+  device_status_consumer:
